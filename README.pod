@@ -17,7 +17,7 @@ Elemental.js requires the jQuery library.
 <strong>Easily Set CSS Attributes:</strong> Just pass a 'css' object attrbutes of CSS attributes to set
 <br />
 <br />
-<strong>Easily Set Binds and callbacks:</strong>  Pass an 'on' object with bundled callbacks to bind & namespace them
+<strong>Easily Set Binds and Callbacks:</strong>  Pass an 'on' object with bundled callbacks to bind & namespace them
 </blockquote>
 <h1>License </h1>
 Elemental.js is release under the MIT license:
