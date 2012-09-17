@@ -10,7 +10,6 @@ Installing Elemental is easy.  Simply download it from git hub and include the e
 <h1>Requires</h1>
 Elemental.js requires the jQuery library.
 <h1>Features</h1>
-<br />
 <blockquote>
 <strong>Easily set HTML Attributes:</strong> Passing in an 'html' object will allow for creating html attributes during element construction
 <br />
@@ -19,8 +18,6 @@ Elemental.js requires the jQuery library.
 <br />
 <br />
 <strong>Easily Set Binds and callbacks:</strong>  Pass an 'on' object with bundled callbacks to bind & namespace them
-<br />
-<br />
 </blockquote>
 <h1>License </h1>
 Elemental.js is release under the MIT license:
