@@ -26,8 +26,12 @@ Elemental.js requires the jQuery library.
 <br />
 </blockquote>
 <h1>License </h1>
-elemental.js is release under the MIT license
+elemental.js is release under the MIT license:
 <br />
-<a href="www.opensource.org/licenses/MIT">www.opensource.org/licenses/MIT</a>
+<ul>
+	<li>
+		<a href="www.opensource.org/licenses/MIT">www.opensource.org/licenses/MIT</a>
+	</li>
+</ul>
 
 =end html
