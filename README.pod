@@ -1,12 +1,9 @@
 
 =begin html
 
-<h1> <a href="http://www.atomicframeworks.com/elemental">Elemental.js </a> - <i>The</i> jQuery Element Factory </h1>
-<br />
-<br />
+<h1> <a href="http://www.atomicframeworks.com/elemental">Elemental.js </a> - The jQuery Element Factory </h1>
+
 Elemental.js was created to make building elements easier.
-<br />
-<br />
 <br />
 <h1>Installing</h1>
 Installing Elemental is easy.  Simply download it from git hub and include the elemental.js file.
