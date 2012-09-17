@@ -23,7 +23,7 @@ Elemental.js requires the jQuery library.
 <br />
 </blockquote>
 <h1>License </h1>
-elemental.js is release under the MIT license:
+Elemental.js is release under the MIT license:
 <br />
 <ul>
 	<li>
