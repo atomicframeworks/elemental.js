@@ -12,7 +12,7 @@ Elemental.js was created to make building elements easier.
 Installing Elemental is easy.  Simply download it from git hub and include the elemental.js file.
 <h1>Requires</h1>
 Elemental.js requires the jQuery library.
-<h1>Features<h1>
+<h1>Features</h1>
 <br />
 <blockquote>
 <strong>Easily set HTML Attributes:</strong> Passing in an 'html' object will allow for creating html attributes during element construction
