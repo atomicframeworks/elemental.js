@@ -1,0 +1,38 @@
+
+=begin html
+
+<h1> <a href="http://www.atomicframeworks.com/elemental">Elemental.js </a> - <i>The</i> jQuery Element Factory </h1>
+<br />
+<br />
+elemental.js was created to make creating elements easier
+<br />
+<br />
+1. Easily set HTML attributes such as id, class, href <br />
+2. Easily set CSS attributes <br />
+3. Easily set event binds & callbacks <br />
+<br/>
+elemental.js adheres to jQuery plugin development best practices. 
+<br />
+<br />
+<h1>Installing</h1>
+Installing Elemental is easy.  Simply download it from git hub and include the elemental.js file.
+<h1>Requires</h1>
+Elemental.js requires the jQuery library.
+<b>Features</b>:
+<br />
+<blockquote>
+<strong>Easily set HTML Attributes:</strong> Passing in an 'html' object will allow for creating html attributes during element construction
+<br />
+<br />
+<strong>Easily Set CSS Attributes:</strong> Just pass a 'css' object attrbutes of CSS attributes to set
+<br />
+<br />
+<strong>Easily Set Binds and callbacks:</strong>  Pass an 'on' object with bundled callbacks to bind & namespace them
+<br />
+<br />
+</blockquote>
+<h1>License </h1>
+elemental.js is release under the MIT license
+<br />
+<a href="www.opensource.org/licenses/MIT">www.opensource.org/licenses/MIT</a>
+=end html
