@@ -19,7 +19,7 @@
 	var methods = {
         
         ////
-        // Init - Accepts an argument of object to load merge with defaults
+        //  Init - Accepts an argument of object to load merge with defaults
         
 		init: function(options) {
            	
@@ -75,17 +75,67 @@
 				}
 				// Append to element if specified
 				if (options.appendTo) {
-					$(options.appendTo).append($elem);
-					//$elem.appendTo(options.appendTo);
+					// If an array of appendTos...
+					if (options.appendTo instanceof Array){						
+						// Loop array of appendTos
+						// We can't simply join the array as a comma seperated string selector because there may be jQuery objects in the array
+						var i = 0, arrayLength = options.appendTo.length;
+						while (i < arrayLength) {
+							// Check if string or jQuery object - unlike .append there is no need to select element before appendingTo
+							if (typeof options.appendTo[i] === 'string' || options.appendTo[i] instanceof jQuery){
+								// We clone() here because according to jQuery documentation...
+								// "If there is more than one target element, however, cloned copies of the inserted element will be created for each target after the first"
+								$elem.clone().appendTo(options.appendTo[i]);
+							}
+							// Increase count before looping
+						    i++;
+						}
+					}
+					// If appendTo is a string or jQuery object...
+					else if (typeof options.appendTo === 'string' || options.appendTo instanceof jQuery){
+						//... Simply appendTo it - unlike .append there is no need to select element before appendingTo
+						$elem.appendTo(options.appendTo);
+					}
 				}
+				// Append elements if specified
+				if (options.append) {
+					// If an array of appends...
+					if (options.append instanceof Array){
+						//... Loop array of appends
+						// We can't simply join the array as a comma seperated string selector because there may be jQuery objects in the array
+						var i = 0, arrayLength = options.append.length;
+						while (i < arrayLength) {
+							// Check if string...
+							if (typeof options.append[i] === 'string'){
+								// If string we must select the element before appending
+								$elem.append($(options.append[i]));
+							}
+							// if jQuery object - simply append it
+							else if (options.append[i] instanceof jQuery){								
+								$elem.append(options.append[i]);
+							}
+							// Increase count before looping
+						    i++;
+						}
+					}
+					// If string we must select the element before appending
+					else if (typeof options.append === 'string'){
+						$elem.append($(options.append));
+					}
+					// if jQuery object - simply append it
+					else if (options.append instanceof jQuery){
+						$elem.append(options.append);
+					}
+				}
+				////
 				// START CALLBACKS
 				// If there are callbacks to bind on...
 				if (options.on){
 					//... Loop through callbacks
 					for (callback in options.on){
 						if (callback){
-							// If callback object
-							if (typeof options.on[callback] == 'object'){
+							// Check if callback is an object
+							if ($.isPlainObject(options.on[callback])){
 								// If we have arguments for the callback...
 								if (options.on[callback].args){
 									//... Bind & namespace callback with args 
@@ -104,17 +154,17 @@
 					}
 				}
 				// END CALLBACKS
+				////
 				return $elem;
 			}
             $.error( 'Argument must be an object with an element attribute.' );
 			return false;
 		// End create
 		}
-	// End methods
     };
 	
-    // Add elemental to jQuery 
-	//
+    ////
+	//  Add elemental to jQuery 
 	
     $.fn.elemental = function(method) {
         if ( methods[method] ) {

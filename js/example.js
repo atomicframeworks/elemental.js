@@ -28,8 +28,8 @@ $(document).ready(function() {
 			// Inline styles if needed...
 			'style': 'margin-top: 2px;'
 		},
-		// Element we append the rawr notification to
-		'appendTo': '.rightColumn > .article > p',
+		// Target Element we append new element to
+		'appendTo': '.rightColumn > .article > p:first',
 		// jQuery style object to add
 		'css': {
 			'position': 'relative',
@@ -66,30 +66,18 @@ $(document).ready(function() {
 		},
     };
 	
-	// An example elemental a link added to our #test elemental object (created above)
-	var aLink = {
-		'content': ' AtomicFrameworks!',
-		'element': 'a',
-		'html': {
-			'href': 'http://www.atomicframeworks.com',
-			'target': '_blank'		
-		},
-		'appendTo': '#test'
-	};
-	
 	// Create the test element
 	$().elemental(elementalObject);
 	
-	// Create the a link (it is set to append to the test element)
-	$().elemental(aLink);
-	
-	// Add a modified link to the footer too
-	aLink.appendTo = '.footer';
-	aLink.css = {
-		'display': 'block',
-		'padding-left': '20%',
-		'margin-top': '25px'
+	// Elemental div
+	var divElement = {
+		'content': 'Elemental div',
+		'element': 'div',
+		// Demonstrate multiple appendTos
+		'appendTo': [$('.nested'), '.rightColumn > .article > p:first', $('.nested')]
 	};
-	$().elemental(aLink);
+	
+	// Create elemental div in test area
+	$().elemental(divElement);
 	
 });
