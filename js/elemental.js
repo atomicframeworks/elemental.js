@@ -43,12 +43,12 @@
 				var elem = '<'+options.element;
 				// If there are HTML attributes to add...
 				if (options.html) {
-					//... Add them...
+					//... Add them
 					for (attribute in options.html) {
 						//... If attribute is not empty
 						if (options.html[attribute]) {
 							//... Add it
-							elem += ' '+attribute+'="'+options.html[attribute]+'"';	
+							elem += ' ' + attribute + '=" ' + options.html[attribute] + '"';	
 						}
 					}
 				}
