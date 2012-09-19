@@ -134,16 +134,10 @@
 					//... Loop through callbacks
 					for (callback in options.on){
 						if (callback){
-							// Check if callback is an object
+							// If callback is an object...
 							if ($.isPlainObject(options.on[callback])){
-								// If we have arguments for the callback...
-								if (options.on[callback].args){
-									//... Bind & namespace callback with args 
-									$elem.on(callback + '.' + options.namespace, options.on[callback].args, options.on[callback].callback);
-								}	else {
-									// If no arguments bind & namespace callback 
-									$elem.on(callback + '.' +  options.namespace, options.on[callback].callback);
-								}
+								//... Bind & namespace callback with args  (undefined if no args is fine)
+								$elem.on(callback + '.' + options.namespace, options.on[callback].args, options.on[callback].callback);
 							} 
 							// If our callback is simply a function...
 							else if (typeof options.on[callback] === 'function'){
