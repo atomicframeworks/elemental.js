@@ -28,6 +28,7 @@
             if ( options ) {
                 $.extend( settings, options );
 			}
+			
 			// Create the element
 			return $.fn.elemental( 'create', settings );
         },
