@@ -157,7 +157,6 @@
 				return $elem;
 			}
             $.error( 'Argument must be an object with an element attribute.' );
-			return false;
 		// End create
 		}
     };
