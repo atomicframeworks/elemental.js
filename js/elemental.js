@@ -1,6 +1,5 @@
-(function($) { // Elemental - Create elements with ease
-	var start = new Date().getTime();
-    
+(function ($) { // Elemental - Create elements with ease
+	'use strict';
 	////
     // Default settings
 	 
@@ -11,44 +10,47 @@
 		'appendTo': 'body',
 		// Namespace for event binds
 		'namespace': 'elemental'
-    };
+    },
     
 	////
     // Available methods
 	
-	var methods = {
+	methods = {
         
         ////
         //  Init - Accepts an argument of object to load merge with defaults
         
-		init: function(options) {
-           	
+		init: function( options ) {
 			// Merge defaults in to scoped settings
 			var settings = {};
-		    $.extend(settings, defaults);
+		    $.extend( settings, defaults );
 			// Merge default options and passed argument options
-            if (options) {
-                $.extend(settings, options);
+            if ( options ) {
+                $.extend( settings, options );
 			}
 			
 			// Create the element
-			return $.fn.elemental('create', settings);
+			return $.fn.elemental( 'create', settings );
         },
 		
 		////
 		//  Create - Factory function to create HTML elements
 		
-		create: function (options){
-			if (options.element) {
-				var elem = '<'+options.element;
+		create: function ( options ) {
+			// If there is an element set...
+			if ( options.element ) {
+				//... start creating the elem string
+				var elem = '<' + options.element;
 				// If there are HTML attributes to add...
-				if (options.html) {
+				if ( options.html ) {
 					//... Add them
-					for (attribute in options.html) {
-						//... If attribute is not empty
-						if (options.html[attribute]) {
-							//... Add it
-							elem += ' ' + attribute + '=" ' + options.html[attribute] + '"';	
+					for ( var attribute in options.html ) {
+						if ( options.html.hasOwnProperty( attribute ) ) {
+							//... If attribute is not empty
+							if ( options.html[attribute] ) {
+								//... Add it
+								elem += ' ' + attribute + '=" ' + options.html[attribute] + '"';	
+							}
 						}
 					}
 				}
@@ -57,92 +59,94 @@
 				// Create the element jQuery style
 				var $elem = $(elem);
 	            // Merge style and css attributes (for ease)
-	            if (options.style) {
-					if (options.css){
-		                $.extend(options.css, options.style);
+	            if ( options.style ) {
+					if ( options.css ) {
+		                $.extend( options.css, options.style );
 					}
-					else{
+					else {
 						options.css = options.style;
 					}
 	            }
 				// If there are css attrs add them jQuery style
-				if (options.css){
-					$elem.css(options.css);
+				if ( options.css ) {
+					$elem.css( options.css );
 				}
 				// Add content in element
-				if (options.content) {
-					$elem.html(options.content);
+				if ( options.content ) {
+					$elem.html( options.content );
 				}
 				// Append to element if specified
-				if (options.appendTo) {
+				if ( options.appendTo ) {
 					// If an array of appendTos...
-					if (options.appendTo instanceof Array){						
+					if ( options.appendTo instanceof Array ){						
 						// Loop array of appendTos
 						// We can't simply join the array as a comma seperated string selector because there may be jQuery objects in the array
 						var i = 0, arrayLength = options.appendTo.length;
-						while (i < arrayLength) {
+						while ( i < arrayLength ) {
 							// Check if string or jQuery object - unlike .append there is no need to select element before appendingTo
-							if (typeof options.appendTo[i] === 'string' || options.appendTo[i] instanceof jQuery){
+							if ( typeof options.appendTo[i] === 'string' || options.appendTo[i] instanceof jQuery ){
 								// We clone() here because according to jQuery documentation...
 								// "If there is more than one target element, however, cloned copies of the inserted element will be created for each target after the first"
-								$elem.clone().appendTo(options.appendTo[i]);
+								$elem.clone().appendTo( options.appendTo[i] );
 							}
 							// Increase count before looping
 						    i++;
 						}
 					}
 					// If appendTo is a string or jQuery object...
-					else if (typeof options.appendTo === 'string' || options.appendTo instanceof jQuery){
+					else if ( typeof options.appendTo === 'string' || options.appendTo instanceof jQuery ){
 						//... Simply appendTo it - unlike .append there is no need to select element before appendingTo
-						$elem.appendTo(options.appendTo);
+						$elem.appendTo( options.appendTo );
 					}
 				}
 				// Append elements if specified
-				if (options.append) {
+				if ( options.append ) {
 					// If an array of appends...
-					if (options.append instanceof Array){
+					if ( options.append instanceof Array ){
 						//... Loop array of appends
 						// We can't simply join the array as a comma seperated string selector because there may be jQuery objects in the array
 						var i = 0, arrayLength = options.append.length;
-						while (i < arrayLength) {
+						while ( i < arrayLength ) {
 							// Check if string...
-							if (typeof options.append[i] === 'string'){
+							if ( typeof options.append[i] === 'string' ){
 								// If string we must select the element before appending
-								$elem.append($(options.append[i]));
+								$elem.append( $(options.append[i]) );
 							}
 							// if jQuery object - simply append it
-							else if (options.append[i] instanceof jQuery){								
-								$elem.append(options.append[i]);
+							else if ( options.append[i] instanceof jQuery ){								
+								$elem.append( options.append[i] );
 							}
 							// Increase count before looping
 						    i++;
 						}
 					}
 					// If string we must select the element before appending
-					else if (typeof options.append === 'string'){
-						$elem.append($(options.append));
+					else if ( typeof options.append === 'string' ){
+						$elem.append( $(options.append) );
 					}
 					// if jQuery object - simply append it
-					else if (options.append instanceof jQuery){
-						$elem.append(options.append);
+					else if ( options.append instanceof jQuery ){
+						$elem.append( options.append );
 					}
 				}
 				////
 				// START CALLBACKS
 				// If there are callbacks to bind on...
-				if (options.on){
+				if ( options.on ) {
 					//... Loop through callbacks
-					for (callback in options.on){
-						if (callback){
-							// If callback is an object...
-							if ($.isPlainObject(options.on[callback])){
-								//... Bind & namespace callback with args  (undefined if no args is fine)
-								$elem.on(callback + '.' + options.namespace, options.on[callback].args, options.on[callback].callback);
-							} 
-							// If our callback is simply a function...
-							else if (typeof options.on[callback] === 'function'){
-								//... Bind & namespace it
-								$elem.on(callback + '.' + options.namespace, options.on[callback]);
+					for ( var callback in options.on ) {
+						if ( options.on.hasOwnProperty(callback) ) {
+							if ( callback ) {
+								// If callback is an object...
+								if ( $.isPlainObject(options.on[callback]) ) {
+									//... Bind & namespace callback with args  (undefined if no args is fine)
+									$elem.on( callback + '.' + options.namespace, options.on[callback].args, options.on[callback].callback );
+								} 
+								// If our callback is simply a function...
+								else if ( typeof options.on[callback] === 'function' ) {
+									//... Bind & namespace it
+									$elem.on( callback + '.' + options.namespace, options.on[callback] );
+								}
 							}
 						}
 					}
@@ -160,12 +164,14 @@
     ////
 	//  Add elemental to jQuery 
 	
-    $.fn.elemental = function(method) {
+    $.fn.elemental = function( method ) {
         if ( methods[method] ) {
             return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
-        } else if ( typeof method === 'object' || ! method ) {
+        } 
+		else if ( typeof method === 'object' || ! method ) {
             return methods.init.apply( this, arguments );
-        } else {
+        }
+		else {
             $.error( 'Method ' +  method + ' does not exist on jQuery.elemental' );
         }
     };
