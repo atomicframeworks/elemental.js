@@ -1,4 +1,4 @@
-(function ($) { // Elemental - Create elements with ease
+( function ( $ ) { // Elemental - Create elements with ease
 	'use strict';
 	////
     // Default settings
@@ -176,4 +176,4 @@
         }
     };
 	
-})(jQuery);
+} )( jQuery );
