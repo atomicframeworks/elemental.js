@@ -5,7 +5,7 @@
 Elemental.js was created to ease building, styling, and binding elements on the fly.
 <br />
 <h1>Installing</h1>
-Installing Elemental is easy.  Simply download it from git hub and include the elemental.js file.
+Installing Elemental is easy.  Simply download it from GitHub and include the elemental.js file.
 <h1>Requires</h1>
 Elemental.js requires the jQuery library.
 <h1>Features</h1>
