@@ -48,7 +48,7 @@
 							//... If attribute is not empty
 							if ( options.html[attribute] ) {
 								//... Add it
-								elem += ' ' + attribute + '=" ' + options.html[attribute] + '"';	
+								elem += ' ' + attribute + '="' + options.html[attribute] + '"';	
 							}
 						}
 					}
