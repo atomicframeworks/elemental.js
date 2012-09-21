@@ -2,7 +2,7 @@
 =begin html
 
 <h1> <a href="http://www.atomicframeworks.com/elemental">Elemental.js </a> - The jQuery Element Factory </h1>
-<img src="https://github.com/atomicframeworks/elemental.js/img/pass.png" alt="JSHint Pass"></img>
+<img src="https://raw.github.com/atomicframeworks/elemental.js/master/img/pass.png" alt="JSHint Pass"></img>
 Elemental.js was created to ease building, styling, and binding elements on the fly.
 <br />
 <h1>Installing</h1>
